@@ -14,13 +14,14 @@ typedef struct qnode {
 } QNode;
 
 typedef struct q_data {
-    /* flesh out the instance specific data structure */
+    /* instance specific data structure */
 	long size;
 	QNode *head;
 	QNode *tail;
 	void (*freeValue)(void *v);
 } QData;
-/* any other data structures needed */
+
+/*Helper functions for clear and destroy*/
 
 static void purge(QData *qd, void (*freeValue)(void *element)) {
 	if (freeValue != NULL) {
@@ -39,7 +40,7 @@ static void freeList(QData *qd) {
 }
 
 static void q_destroy(const Queue *q) {
-    /* implementation of the destroy() method */
+    /* destroy() method */
 	QData *qd = (QData *)q->self;
 	purge(qd, qd->freeValue);
 	freeList(qd);
