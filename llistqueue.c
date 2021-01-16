@@ -6,7 +6,6 @@
 
 #include "ADTs/llistqueue.h"
 #include <stdlib.h>
-/* any other includes needed for the implementation */
 
 typedef struct qnode {
 	struct qnode *next;
